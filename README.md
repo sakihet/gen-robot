@@ -1,42 +1,38 @@
-# .
+# gen-robot
 
-This template should help get you started developing with Vue 3 in Vite.
+A minimal robot icon generator. Compose a robot from flat geometric parts and export it as SVG or PNG.
 
-## Recommended IDE Setup
+<img src="public/robot.png" width="160" alt="Sample robot icon">
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Recommended Browser Setup
+- Part picker: head, eyes, mouth, antenna, ears, neck, body, and chest details
+- Color selection: base color (including metallic grays) and eye/accent color
+- Random generation
+- Export as SVG (vector) or PNG (512px)
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Built with Vue 3, Vite, and TypeScript. Robots are rendered as a single SVG string shared by the preview and the exporters.
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Development
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Build
 
 ```sh
 npm run build
 ```
+
+## Type Check and Format
+
+```sh
+npm run type-check
+npm run format
+```
+
+## License
+
+[MIT](LICENSE)

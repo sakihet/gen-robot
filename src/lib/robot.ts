@@ -1,9 +1,21 @@
-export const HEADS = ['square', 'circle', 'trapezoid', 'hexagon', 'arch', 'inverted'] as const
-export const EYES = ['square', 'circle', 'visor', 'mono', 'triple'] as const
+export const HEADS = ['square', 'circle', 'trapezoid', 'hexagon', 'arch', 'inverted', 'tall'] as const
+export const EYES = [
+  'square',
+  'circle',
+  'visor',
+  'scan',
+  'split',
+  'mono',
+  'monosquare',
+  'lens',
+  'triple',
+  'slit',
+  'goggle',
+] as const
 export const MOUTHS = ['line', 'grill', 'zigzag', 'teeth', 'dots'] as const
 export const ANTENNAS = ['ball', 'double', 'loop', 'zigzag', 'vee', 'none'] as const
 export const EARS = ['none', 'bolt', 'round', 'pin', 'fin'] as const
-export const NECKS = ['plain', 'duct', 'twin'] as const
+export const NECKS = ['plain', 'duct', 'twin', 'ball', 'collar'] as const
 export const BODIES = ['square', 'round', 'trapezoid', 'inverted', 'hexagon', 'capsule'] as const
 export const CHESTS = ['none', 'buttons', 'screen', 'core', 'hazard', 'vent'] as const
 

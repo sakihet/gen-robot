@@ -15,14 +15,21 @@ const headOptions = [
   { value: 'hexagon', label: 'Hexagon' },
   { value: 'arch', label: 'Arch' },
   { value: 'inverted', label: 'Inverted' },
+  { value: 'tall', label: 'Tall' },
 ] as const
 
 const eyesOptions = [
   { value: 'square', label: 'Square' },
   { value: 'circle', label: 'Circle' },
   { value: 'visor', label: 'Visor' },
+  { value: 'scan', label: 'Scan' },
+  { value: 'split', label: 'Split' },
   { value: 'mono', label: 'Mono' },
+  { value: 'monosquare', label: 'Mono Sq' },
+  { value: 'lens', label: 'Lens' },
   { value: 'triple', label: 'Triple' },
+  { value: 'slit', label: 'Slit' },
+  { value: 'goggle', label: 'Goggle' },
 ] as const
 
 const mouthOptions = [
@@ -54,6 +61,8 @@ const neckOptions = [
   { value: 'plain', label: 'Plain' },
   { value: 'duct', label: 'Duct' },
   { value: 'twin', label: 'Twin' },
+  { value: 'ball', label: 'Ball' },
+  { value: 'collar', label: 'Collar' },
 ] as const
 
 const bodyOptions = [

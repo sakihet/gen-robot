@@ -21,6 +21,8 @@ function renderHead(config: RobotConfig): string {
       return `<path d="M23 58 V44 Q23 16 50 16 Q77 16 77 44 V58 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'inverted':
       return `<path d="M23 16 H77 L70 58 H30 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
+    case 'tall':
+      return `<rect x="30" y="14" width="40" height="44" rx="5" fill="${config.faceColor}" ${OUTLINE}/>`
   }
 }
 
@@ -33,10 +35,25 @@ function renderEyes(config: RobotConfig): string {
       return `<circle cx="39" cy="33" r="4.5" ${eye}/><circle cx="61" cy="33" r="4.5" ${eye}/>`
     case 'visor':
       return `<rect x="32" y="28" width="36" height="10" rx="5" ${eye}/>`
+    case 'scan':
+      return `<rect x="32" y="30.5" width="36" height="4.5" rx="2.25" ${eye}/>`
+    case 'split':
+      return `<rect x="32" y="28" width="16" height="10" rx="5" ${eye}/><rect x="52" y="28" width="16" height="10" rx="5" ${eye}/>`
     case 'mono':
       return `<circle cx="50" cy="33" r="7.5" ${eye}/>`
+    case 'monosquare':
+      return `<rect x="43" y="26" width="14" height="14" rx="3" ${eye}/>`
+    case 'lens':
+      return `<circle cx="50" cy="33" r="8" ${eye}/><circle cx="50" cy="33" r="3" fill="${DARK}"/>`
     case 'triple':
       return `<circle cx="37" cy="33" r="4" ${eye}/><circle cx="50" cy="33" r="4" ${eye}/><circle cx="63" cy="33" r="4" ${eye}/>`
+    case 'slit':
+      return `<rect x="37" y="28" width="4" height="10" rx="2" ${eye}/><rect x="59" y="28" width="4" height="10" rx="2" ${eye}/>`
+    case 'goggle':
+      return (
+        `<line x1="44" y1="33" x2="56" y2="33" stroke="${DARK}" stroke-width="2"/>` +
+        `<circle cx="39" cy="33" r="5.5" ${eye}/><circle cx="61" cy="33" r="5.5" ${eye}/>`
+      )
   }
 }
 
@@ -85,25 +102,44 @@ function renderAntenna(config: RobotConfig): string {
   }
 }
 
+// Ears are drawn to attach to head edges near x=28/72; narrower heads
+// shift them inward by this amount so they stay attached
+const EAR_SHIFT: Record<RobotConfig['head'], number> = {
+  square: 0,
+  circle: 0,
+  trapezoid: 0,
+  hexagon: 0,
+  arch: 0,
+  inverted: 0,
+  tall: 4,
+}
+
 function renderEars(config: RobotConfig): string {
+  let left = ''
+  let right = ''
   switch (config.ears) {
     case 'bolt':
-      return `<rect x="15" y="27" width="13" height="12" rx="2" fill="${config.faceColor}" ${OUTLINE}/><rect x="72" y="27" width="13" height="12" rx="2" fill="${config.faceColor}" ${OUTLINE}/>`
+      left = `<rect x="15" y="27" width="13" height="12" rx="2" fill="${config.faceColor}" ${OUTLINE}/>`
+      right = `<rect x="72" y="27" width="13" height="12" rx="2" fill="${config.faceColor}" ${OUTLINE}/>`
+      break
     case 'round':
-      return `<circle cx="22" cy="33" r="7" fill="${config.faceColor}" ${OUTLINE}/><circle cx="78" cy="33" r="7" fill="${config.faceColor}" ${OUTLINE}/>`
+      left = `<circle cx="22" cy="33" r="7" fill="${config.faceColor}" ${OUTLINE}/>`
+      right = `<circle cx="78" cy="33" r="7" fill="${config.faceColor}" ${OUTLINE}/>`
+      break
     case 'pin':
-      return (
-        `<rect x="14" y="31.5" width="15" height="3" fill="${DARK}"/><circle cx="14" cy="33" r="3" fill="${DARK}"/>` +
-        `<rect x="71" y="31.5" width="15" height="3" fill="${DARK}"/><circle cx="86" cy="33" r="3" fill="${DARK}"/>`
-      )
+      left = `<rect x="14" y="31.5" width="15" height="3" fill="${DARK}"/><circle cx="14" cy="33" r="3" fill="${DARK}"/>`
+      right = `<rect x="71" y="31.5" width="15" height="3" fill="${DARK}"/><circle cx="86" cy="33" r="3" fill="${DARK}"/>`
+      break
     case 'fin':
-      return (
-        `<path d="M29 26 L16 33 L29 40 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>` +
-        `<path d="M71 26 L84 33 L71 40 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
-      )
+      left = `<path d="M29 26 L16 33 L29 40 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
+      right = `<path d="M71 26 L84 33 L71 40 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
+      break
     case 'none':
       return ''
   }
+  const shift = EAR_SHIFT[config.head]
+  if (shift === 0) return left + right
+  return `<g transform="translate(${shift} 0)">${left}</g><g transform="translate(${-shift} 0)">${right}</g>`
 }
 
 function renderNeck(config: RobotConfig): string {
@@ -119,6 +155,10 @@ function renderNeck(config: RobotConfig): string {
       )
     case 'twin':
       return `<rect x="41" y="54" width="6" height="14" fill="${DARK}"/><rect x="53" y="54" width="6" height="14" fill="${DARK}"/>`
+    case 'ball':
+      return `<circle cx="50" cy="62" r="5.5" fill="${DARK}"/>`
+    case 'collar':
+      return `<path d="M42 54 H58 L64 68 H36 Z" fill="${DARK}"/>`
   }
 }
 

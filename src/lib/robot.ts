@@ -5,7 +5,9 @@ export const ANTENNAS = ['ball', 'double', 'loop', 'zigzag', 'vee', 'none'] as c
 export const EARS = ['none', 'bolt', 'round', 'pin', 'fin'] as const
 export const NECKS = ['plain', 'duct', 'twin'] as const
 export const BODIES = ['square', 'round', 'trapezoid', 'inverted', 'hexagon', 'capsule'] as const
-export const CHESTS = ['none', 'buttons', 'screen', 'core'] as const
+export const CHESTS = ['none', 'buttons', 'screen', 'core', 'hazard', 'vent'] as const
+
+export const FACE_COLORS = ['#ffffff', '#d9dade', '#aeb0b8', '#7a7d86'] as const
 
 export const COLORS = [
   '#e5484d',
@@ -36,6 +38,7 @@ export interface RobotConfig {
   neck: Neck
   body: Body
   chest: Chest
+  faceColor: string
   eyeColor: string
 }
 
@@ -49,6 +52,7 @@ export function defaultConfig(): RobotConfig {
     neck: 'plain',
     body: 'square',
     chest: 'core',
+    faceColor: FACE_COLORS[0],
     eyeColor: COLORS[5],
   }
 }
@@ -67,6 +71,7 @@ export function randomConfig(): RobotConfig {
     neck: pick(NECKS),
     body: pick(BODIES),
     chest: pick(CHESTS),
+    faceColor: pick(FACE_COLORS),
     eyeColor: pick(COLORS),
   }
 }

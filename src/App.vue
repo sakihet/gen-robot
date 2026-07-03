@@ -4,7 +4,7 @@ import PartPicker from './components/PartPicker.vue'
 import RobotPreview from './components/RobotPreview.vue'
 import { downloadPng, downloadSvg } from './lib/export'
 import { renderRobotSvg } from './lib/render'
-import { COLORS, defaultConfig, randomConfig } from './lib/robot'
+import { COLORS, FACE_COLORS, defaultConfig, randomConfig } from './lib/robot'
 
 const config = reactive(defaultConfig())
 
@@ -70,6 +70,8 @@ const chestOptions = [
   { value: 'buttons', label: 'Buttons' },
   { value: 'screen', label: 'Screen' },
   { value: 'core', label: 'Core' },
+  { value: 'hazard', label: 'Hazard' },
+  { value: 'vent', label: 'Vent' },
 ] as const
 
 function randomize() {
@@ -99,6 +101,21 @@ function savePng() {
         <PartPicker v-model="config.neck" label="Neck" :options="neckOptions" />
         <PartPicker v-model="config.body" label="Body" :options="bodyOptions" />
         <PartPicker v-model="config.chest" label="Chest" :options="chestOptions" />
+        <div class="picker">
+          <span class="picker-label">Base color</span>
+          <div class="swatches">
+            <button
+              v-for="color in FACE_COLORS"
+              :key="color"
+              type="button"
+              class="swatch"
+              :class="{ selected: color === config.faceColor }"
+              :style="{ background: color }"
+              :aria-label="color"
+              @click="config.faceColor = color"
+            ></button>
+          </div>
+        </div>
         <div class="picker">
           <span class="picker-label">Eye color</span>
           <div class="swatches">
@@ -175,6 +192,7 @@ function savePng() {
   height: 1.5rem;
   border: 2px solid transparent;
   border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.15);
   cursor: pointer;
 }
 

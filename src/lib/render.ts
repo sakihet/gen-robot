@@ -2,7 +2,6 @@ import type { RobotConfig } from './robot'
 
 // Fixed dark color for outlines, mouth, and antenna
 const DARK = '#26262b'
-const FACE = '#ffffff'
 // Stroke widths: 2.5 for outlines and main lines, 2 for fine details
 const OUTLINE = `stroke="${DARK}" stroke-width="2.5"`
 
@@ -11,17 +10,17 @@ const OUTLINE = `stroke="${DARK}" stroke-width="2.5"`
 function renderHead(config: RobotConfig): string {
   switch (config.head) {
     case 'square':
-      return `<rect x="23" y="16" width="54" height="42" rx="5" fill="${FACE}" ${OUTLINE}/>`
+      return `<rect x="23" y="16" width="54" height="42" rx="5" fill="${config.faceColor}" ${OUTLINE}/>`
     case 'circle':
-      return `<circle cx="50" cy="36" r="22" fill="${FACE}" ${OUTLINE}/>`
+      return `<circle cx="50" cy="36" r="22" fill="${config.faceColor}" ${OUTLINE}/>`
     case 'trapezoid':
-      return `<path d="M30 16 H70 L77 58 H23 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+      return `<path d="M30 16 H70 L77 58 H23 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'hexagon':
-      return `<path d="M34 16 H66 L77 37 L66 58 H34 L23 37 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+      return `<path d="M34 16 H66 L77 37 L66 58 H34 L23 37 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'arch':
-      return `<path d="M23 58 V44 Q23 16 50 16 Q77 16 77 44 V58 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+      return `<path d="M23 58 V44 Q23 16 50 16 Q77 16 77 44 V58 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'inverted':
-      return `<path d="M23 16 H77 L70 58 H30 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+      return `<path d="M23 16 H77 L70 58 H30 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
   }
 }
 
@@ -89,9 +88,9 @@ function renderAntenna(config: RobotConfig): string {
 function renderEars(config: RobotConfig): string {
   switch (config.ears) {
     case 'bolt':
-      return `<rect x="15" y="27" width="13" height="12" rx="2" fill="${FACE}" ${OUTLINE}/><rect x="72" y="27" width="13" height="12" rx="2" fill="${FACE}" ${OUTLINE}/>`
+      return `<rect x="15" y="27" width="13" height="12" rx="2" fill="${config.faceColor}" ${OUTLINE}/><rect x="72" y="27" width="13" height="12" rx="2" fill="${config.faceColor}" ${OUTLINE}/>`
     case 'round':
-      return `<circle cx="22" cy="33" r="7" fill="${FACE}" ${OUTLINE}/><circle cx="78" cy="33" r="7" fill="${FACE}" ${OUTLINE}/>`
+      return `<circle cx="22" cy="33" r="7" fill="${config.faceColor}" ${OUTLINE}/><circle cx="78" cy="33" r="7" fill="${config.faceColor}" ${OUTLINE}/>`
     case 'pin':
       return (
         `<rect x="14" y="31.5" width="15" height="3" fill="${DARK}"/><circle cx="14" cy="33" r="3" fill="${DARK}"/>` +
@@ -99,8 +98,8 @@ function renderEars(config: RobotConfig): string {
       )
     case 'fin':
       return (
-        `<path d="M29 26 L16 33 L29 40 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>` +
-        `<path d="M71 26 L84 33 L71 40 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+        `<path d="M29 26 L16 33 L29 40 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>` +
+        `<path d="M71 26 L84 33 L71 40 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
       )
     case 'none':
       return ''
@@ -126,17 +125,17 @@ function renderNeck(config: RobotConfig): string {
 function renderBody(config: RobotConfig): string {
   switch (config.body) {
     case 'square':
-      return `<rect x="24" y="66" width="52" height="28" rx="4" fill="${FACE}" ${OUTLINE}/>`
+      return `<rect x="24" y="66" width="52" height="28" rx="4" fill="${config.faceColor}" ${OUTLINE}/>`
     case 'round':
-      return `<path d="M24 94 V82 Q24 66 39 66 H61 Q76 66 76 82 V94 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+      return `<path d="M24 94 V82 Q24 66 39 66 H61 Q76 66 76 82 V94 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'trapezoid':
-      return `<path d="M31 66 H69 L76 94 H24 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+      return `<path d="M31 66 H69 L76 94 H24 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'inverted':
-      return `<path d="M24 66 H76 L69 94 H31 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+      return `<path d="M24 66 H76 L69 94 H31 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'hexagon':
-      return `<path d="M35 66 H65 L76 80 L65 94 H35 L24 80 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+      return `<path d="M35 66 H65 L76 80 L65 94 H35 L24 80 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'capsule':
-      return `<rect x="24" y="66" width="52" height="28" rx="14" fill="${FACE}" ${OUTLINE}/>`
+      return `<rect x="24" y="66" width="52" height="28" rx="14" fill="${config.faceColor}" ${OUTLINE}/>`
   }
 }
 
@@ -148,6 +147,20 @@ function renderChest(config: RobotConfig): string {
       return `<rect x="39" y="74" width="22" height="12" rx="1.5" fill="none" stroke="${DARK}" stroke-width="2"/>`
     case 'core':
       return `<circle cx="50" cy="80" r="5.5" fill="${config.eyeColor}" stroke="${DARK}" stroke-width="2"/>`
+    case 'hazard':
+      return (
+        `<clipPath id="hazard-clip"><rect x="38" y="75" width="24" height="10" rx="1.5"/></clipPath>` +
+        `<g clip-path="url(#hazard-clip)">` +
+        [32, 40, 48, 56]
+          .map((x) => `<line x1="${x}" y1="88" x2="${x + 10}" y2="72" stroke="${DARK}" stroke-width="4"/>`)
+          .join('') +
+        `</g>` +
+        `<rect x="38" y="75" width="24" height="10" rx="1.5" fill="none" stroke="${DARK}" stroke-width="2"/>`
+      )
+    case 'vent':
+      return [74.5, 79, 83.5]
+        .map((y) => `<rect x="40" y="${y}" width="20" height="2.5" rx="1.25" fill="${DARK}"/>`)
+        .join('')
     case 'none':
       return ''
   }

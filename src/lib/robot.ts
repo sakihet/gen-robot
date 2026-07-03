@@ -13,8 +13,22 @@ export const EYES = [
   'goggle',
 ] as const
 export const MOUTHS = ['line', 'grill', 'zigzag', 'teeth', 'dots'] as const
-export const ANTENNAS = ['ball', 'double', 'loop', 'zigzag', 'vee', 'none'] as const
-export const EARS = ['none', 'bolt', 'round', 'pin', 'fin'] as const
+export const ANTENNAS = [
+  'ball',
+  'double',
+  'loop',
+  'zigzag',
+  'vee',
+  'dish',
+  'tee',
+  'coil',
+  'blade',
+  'mast',
+  'scope',
+  'beacon',
+  'none',
+] as const
+export const EARS = ['none', 'bolt', 'round', 'pin', 'fin', 'hex', 'vent', 'bracket'] as const
 export const NECKS = ['plain', 'duct', 'twin', 'ball', 'collar'] as const
 export const BODIES = ['square', 'round', 'trapezoid', 'inverted', 'hexagon', 'capsule'] as const
 export const CHESTS = ['none', 'buttons', 'screen', 'core', 'hazard', 'vent'] as const

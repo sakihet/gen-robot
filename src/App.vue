@@ -46,6 +46,13 @@ const antennaOptions = [
   { value: 'loop', label: 'Loop' },
   { value: 'zigzag', label: 'Zigzag' },
   { value: 'vee', label: 'V' },
+  { value: 'dish', label: 'Dish' },
+  { value: 'tee', label: 'Tee' },
+  { value: 'coil', label: 'Coil' },
+  { value: 'blade', label: 'Blade' },
+  { value: 'mast', label: 'Mast' },
+  { value: 'scope', label: 'Scope' },
+  { value: 'beacon', label: 'Beacon' },
   { value: 'none', label: 'None' },
 ] as const
 
@@ -55,6 +62,9 @@ const earsOptions = [
   { value: 'round', label: 'Round' },
   { value: 'pin', label: 'Pin' },
   { value: 'fin', label: 'Fin' },
+  { value: 'hex', label: 'Hex' },
+  { value: 'vent', label: 'Vent' },
+  { value: 'bracket', label: 'Bracket' },
 ] as const
 
 const neckOptions = [

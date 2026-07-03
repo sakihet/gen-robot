@@ -97,6 +97,30 @@ function renderAntenna(config: RobotConfig): string {
         `<line x1="50" y1="18" x2="42" y2="5" stroke="${DARK}" stroke-width="3" stroke-linecap="round"/>` +
         `<line x1="50" y1="18" x2="58" y2="5" stroke="${DARK}" stroke-width="3" stroke-linecap="round"/>`
       )
+    case 'dish':
+      return `<line x1="50" y1="18" x2="50" y2="10" stroke="${DARK}" stroke-width="3"/><path d="M42 8.5 A 8 8 0 0 0 58 8.5 Z" fill="${DARK}"/>`
+    case 'tee':
+      return (
+        `<line x1="50" y1="18" x2="50" y2="7" stroke="${DARK}" stroke-width="3"/>` +
+        `<line x1="44" y1="6.5" x2="56" y2="6.5" stroke="${DARK}" stroke-width="3" stroke-linecap="round"/>`
+      )
+    case 'coil':
+      return `<path d="M50 18 C 44 16 44 12.5 50 11.5 C 56 10.5 56 7 50 5" fill="none" stroke="${DARK}" stroke-width="2.5" stroke-linecap="round"/>`
+    case 'blade':
+      return `<path d="M45 18 L57 4 L53 18 Z" fill="${DARK}" stroke="${DARK}" stroke-width="2" stroke-linejoin="round"/>`
+    case 'mast':
+      return (
+        `<line x1="50" y1="18" x2="50" y2="4" stroke="${DARK}" stroke-width="2.5"/>` +
+        `<line x1="44" y1="13" x2="56" y2="13" stroke="${DARK}" stroke-width="2.5"/>` +
+        `<line x1="46" y1="8" x2="54" y2="8" stroke="${DARK}" stroke-width="2.5"/>`
+      )
+    case 'scope':
+      return `<path d="M50 18 V8 H59" fill="none" stroke="${DARK}" stroke-width="3"/><circle cx="59" cy="8" r="2.5" fill="${DARK}"/>`
+    case 'beacon':
+      return (
+        `<path d="M45.5 13.5 A 4.5 4.5 0 0 1 54.5 13.5 Z" fill="${config.eyeColor}" stroke="${DARK}" stroke-width="2"/>` +
+        `<rect x="44" y="13.5" width="12" height="4" rx="1" fill="${DARK}"/>`
+      )
     case 'none':
       return ''
   }
@@ -133,6 +157,18 @@ function renderEars(config: RobotConfig): string {
     case 'fin':
       left = `<path d="M29 26 L16 33 L29 40 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
       right = `<path d="M71 26 L84 33 L71 40 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
+      break
+    case 'hex':
+      left = `<path d="M28 33 L25 38.2 L19 38.2 L16 33 L19 27.8 L25 27.8 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
+      right = `<path d="M72 33 L75 38.2 L81 38.2 L84 33 L81 27.8 L75 27.8 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
+      break
+    case 'vent':
+      left = `<rect x="14" y="29" width="14" height="3" rx="1.5" fill="${DARK}"/><rect x="14" y="35" width="14" height="3" rx="1.5" fill="${DARK}"/>`
+      right = `<rect x="72" y="29" width="14" height="3" rx="1.5" fill="${DARK}"/><rect x="72" y="35" width="14" height="3" rx="1.5" fill="${DARK}"/>`
+      break
+    case 'bracket':
+      left = `<path d="M28 26 H19 V40 H28" fill="none" stroke="${DARK}" stroke-width="2.5"/>`
+      right = `<path d="M72 26 H81 V40 H72" fill="none" stroke="${DARK}" stroke-width="2.5"/>`
       break
     case 'none':
       return ''

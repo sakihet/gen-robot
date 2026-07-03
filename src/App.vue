@@ -28,9 +28,9 @@ const eyesOptions = [
 const mouthOptions = [
   { value: 'line', label: 'Line' },
   { value: 'grill', label: 'Grill' },
-  { value: 'smile', label: 'Smile' },
   { value: 'zigzag', label: 'Zigzag' },
   { value: 'teeth', label: 'Teeth' },
+  { value: 'dots', label: 'Dots' },
 ] as const
 
 const antennaOptions = [
@@ -45,6 +45,9 @@ const antennaOptions = [
 const earsOptions = [
   { value: 'none', label: 'None' },
   { value: 'bolt', label: 'Bolt' },
+  { value: 'round', label: 'Round' },
+  { value: 'pin', label: 'Pin' },
+  { value: 'fin', label: 'Fin' },
 ] as const
 
 const neckOptions = [
@@ -57,6 +60,9 @@ const bodyOptions = [
   { value: 'square', label: 'Square' },
   { value: 'round', label: 'Round' },
   { value: 'trapezoid', label: 'Trapezoid' },
+  { value: 'inverted', label: 'Inverted' },
+  { value: 'hexagon', label: 'Hexagon' },
+  { value: 'capsule', label: 'Capsule' },
 ] as const
 
 const chestOptions = [

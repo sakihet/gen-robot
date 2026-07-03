@@ -48,8 +48,6 @@ function renderMouth(config: RobotConfig): string {
       return [37.5, 44.5, 51.5, 58.5]
         .map((x) => `<rect x="${x}" y="43" width="4" height="10" rx="1.5" fill="${DARK}"/>`)
         .join('')
-    case 'smile':
-      return `<path d="M40 44 A 12 12 0 0 0 60 44" stroke="${DARK}" stroke-width="4" stroke-linecap="round" fill="none"/>`
     case 'zigzag':
       return `<path d="M38 49 L42 45 L46 49 L50 45 L54 49 L58 45 L62 49" stroke="${DARK}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
     case 'teeth':
@@ -59,6 +57,8 @@ function renderMouth(config: RobotConfig): string {
         `<line x1="50" y1="43" x2="50" y2="52" stroke="${DARK}" stroke-width="2.5"/>` +
         `<line x1="55" y1="43" x2="55" y2="52" stroke="${DARK}" stroke-width="2.5"/>`
       )
+    case 'dots':
+      return `<circle cx="42" cy="48" r="2.2" fill="${DARK}"/><circle cx="50" cy="48" r="2.2" fill="${DARK}"/><circle cx="58" cy="48" r="2.2" fill="${DARK}"/>`
   }
 }
 
@@ -89,6 +89,18 @@ function renderEars(config: RobotConfig): string {
   switch (config.ears) {
     case 'bolt':
       return `<rect x="15" y="27" width="13" height="12" rx="3" fill="${FACE}" ${OUTLINE}/><rect x="72" y="27" width="13" height="12" rx="3" fill="${FACE}" ${OUTLINE}/>`
+    case 'round':
+      return `<circle cx="22" cy="33" r="7" fill="${FACE}" ${OUTLINE}/><circle cx="78" cy="33" r="7" fill="${FACE}" ${OUTLINE}/>`
+    case 'pin':
+      return (
+        `<rect x="14" y="31" width="15" height="4" fill="${DARK}"/><circle cx="14" cy="33" r="3.5" fill="${DARK}"/>` +
+        `<rect x="71" y="31" width="15" height="4" fill="${DARK}"/><circle cx="86" cy="33" r="3.5" fill="${DARK}"/>`
+      )
+    case 'fin':
+      return (
+        `<path d="M29 26 L16 33 L29 40 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>` +
+        `<path d="M71 26 L84 33 L71 40 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+      )
     case 'none':
       return ''
   }
@@ -118,6 +130,12 @@ function renderBody(config: RobotConfig): string {
       return `<path d="M24 94 V82 Q24 66 39 66 H61 Q76 66 76 82 V94 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'trapezoid':
       return `<path d="M31 66 H69 L76 94 H24 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+    case 'inverted':
+      return `<path d="M24 66 H76 L69 94 H31 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+    case 'hexagon':
+      return `<path d="M35 66 H65 L76 80 L65 94 H35 L24 80 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
+    case 'capsule':
+      return `<rect x="24" y="66" width="52" height="28" rx="14" fill="${FACE}" ${OUTLINE}/>`
   }
 }
 

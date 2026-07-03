@@ -1,8 +1,11 @@
-export const HEADS = ['square', 'circle', 'trapezoid'] as const
-export const EYES = ['square', 'circle', 'visor'] as const
-export const MOUTHS = ['line', 'grill', 'smile'] as const
-export const ANTENNAS = ['ball', 'double', 'none'] as const
+export const HEADS = ['square', 'circle', 'trapezoid', 'hexagon', 'arch', 'inverted'] as const
+export const EYES = ['square', 'circle', 'visor', 'mono', 'triple'] as const
+export const MOUTHS = ['line', 'grill', 'smile', 'zigzag', 'teeth'] as const
+export const ANTENNAS = ['ball', 'double', 'loop', 'zigzag', 'vee', 'none'] as const
 export const EARS = ['none', 'bolt'] as const
+export const NECKS = ['plain', 'duct', 'twin'] as const
+export const BODIES = ['square', 'round', 'trapezoid'] as const
+export const CHESTS = ['none', 'buttons', 'screen', 'core'] as const
 
 export const COLORS = [
   '#e5484d',
@@ -20,6 +23,9 @@ export type Eyes = (typeof EYES)[number]
 export type Mouth = (typeof MOUTHS)[number]
 export type Antenna = (typeof ANTENNAS)[number]
 export type Ears = (typeof EARS)[number]
+export type Neck = (typeof NECKS)[number]
+export type Body = (typeof BODIES)[number]
+export type Chest = (typeof CHESTS)[number]
 
 export interface RobotConfig {
   head: Head
@@ -27,6 +33,9 @@ export interface RobotConfig {
   mouth: Mouth
   antenna: Antenna
   ears: Ears
+  neck: Neck
+  body: Body
+  chest: Chest
   eyeColor: string
 }
 
@@ -37,6 +46,9 @@ export function defaultConfig(): RobotConfig {
     mouth: 'line',
     antenna: 'ball',
     ears: 'none',
+    neck: 'plain',
+    body: 'square',
+    chest: 'core',
     eyeColor: COLORS[5],
   }
 }
@@ -52,6 +64,9 @@ export function randomConfig(): RobotConfig {
     mouth: pick(MOUTHS),
     antenna: pick(ANTENNAS),
     ears: pick(EARS),
+    neck: pick(NECKS),
+    body: pick(BODIES),
+    chest: pick(CHESTS),
     eyeColor: pick(COLORS),
   }
 }

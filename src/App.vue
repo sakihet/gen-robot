@@ -12,29 +12,58 @@ const headOptions = [
   { value: 'square', label: 'Square' },
   { value: 'circle', label: 'Circle' },
   { value: 'trapezoid', label: 'Trapezoid' },
+  { value: 'hexagon', label: 'Hexagon' },
+  { value: 'arch', label: 'Arch' },
+  { value: 'inverted', label: 'Inverted' },
 ] as const
 
 const eyesOptions = [
   { value: 'square', label: 'Square' },
   { value: 'circle', label: 'Circle' },
   { value: 'visor', label: 'Visor' },
+  { value: 'mono', label: 'Mono' },
+  { value: 'triple', label: 'Triple' },
 ] as const
 
 const mouthOptions = [
   { value: 'line', label: 'Line' },
   { value: 'grill', label: 'Grill' },
   { value: 'smile', label: 'Smile' },
+  { value: 'zigzag', label: 'Zigzag' },
+  { value: 'teeth', label: 'Teeth' },
 ] as const
 
 const antennaOptions = [
   { value: 'ball', label: 'Single' },
   { value: 'double', label: 'Double' },
+  { value: 'loop', label: 'Loop' },
+  { value: 'zigzag', label: 'Zigzag' },
+  { value: 'vee', label: 'V' },
   { value: 'none', label: 'None' },
 ] as const
 
 const earsOptions = [
   { value: 'none', label: 'None' },
   { value: 'bolt', label: 'Bolt' },
+] as const
+
+const neckOptions = [
+  { value: 'plain', label: 'Plain' },
+  { value: 'duct', label: 'Duct' },
+  { value: 'twin', label: 'Twin' },
+] as const
+
+const bodyOptions = [
+  { value: 'square', label: 'Square' },
+  { value: 'round', label: 'Round' },
+  { value: 'trapezoid', label: 'Trapezoid' },
+] as const
+
+const chestOptions = [
+  { value: 'none', label: 'None' },
+  { value: 'buttons', label: 'Buttons' },
+  { value: 'screen', label: 'Screen' },
+  { value: 'core', label: 'Core' },
 ] as const
 
 function randomize() {
@@ -61,6 +90,9 @@ function savePng() {
         <PartPicker v-model="config.mouth" label="Mouth" :options="mouthOptions" />
         <PartPicker v-model="config.antenna" label="Antenna" :options="antennaOptions" />
         <PartPicker v-model="config.ears" label="Ears" :options="earsOptions" />
+        <PartPicker v-model="config.neck" label="Neck" :options="neckOptions" />
+        <PartPicker v-model="config.body" label="Body" :options="bodyOptions" />
+        <PartPicker v-model="config.chest" label="Chest" :options="chestOptions" />
         <div class="picker">
           <span class="picker-label">Eye color</span>
           <div class="swatches">
@@ -88,7 +120,7 @@ function savePng() {
 
 <style scoped>
 .app {
-  max-width: 40rem;
+  max-width: 44rem;
   margin: 0 auto;
   padding: 2rem 1rem;
   display: flex;
@@ -109,6 +141,8 @@ function savePng() {
 }
 
 .controls {
+  flex: 1;
+  min-width: 14rem;
   display: flex;
   flex-direction: column;
   gap: 0.875rem;

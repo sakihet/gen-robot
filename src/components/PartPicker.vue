@@ -39,6 +39,7 @@ const model = defineModel<string>({ required: true })
 
 .picker-options {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.375rem;
 }
 

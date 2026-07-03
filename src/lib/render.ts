@@ -3,14 +3,15 @@ import type { RobotConfig } from './robot'
 // Fixed dark color for outlines, mouth, and antenna
 const DARK = '#26262b'
 const FACE = '#ffffff'
-const OUTLINE = `stroke="${DARK}" stroke-width="3"`
+// Stroke widths: 2.5 for outlines and main lines, 2 for fine details
+const OUTLINE = `stroke="${DARK}" stroke-width="2.5"`
 
 // Layout: antenna y 1-18, head y 16-58, visible neck y 58-66, body y 66-94
 
 function renderHead(config: RobotConfig): string {
   switch (config.head) {
     case 'square':
-      return `<rect x="23" y="16" width="54" height="42" rx="8" fill="${FACE}" ${OUTLINE}/>`
+      return `<rect x="23" y="16" width="54" height="42" rx="5" fill="${FACE}" ${OUTLINE}/>`
     case 'circle':
       return `<circle cx="50" cy="36" r="22" fill="${FACE}" ${OUTLINE}/>`
     case 'trapezoid':
@@ -25,10 +26,10 @@ function renderHead(config: RobotConfig): string {
 }
 
 function renderEyes(config: RobotConfig): string {
-  const eye = `fill="${config.eyeColor}" stroke="${DARK}" stroke-width="2.5"`
+  const eye = `fill="${config.eyeColor}" stroke="${DARK}" stroke-width="2"`
   switch (config.eyes) {
     case 'square':
-      return `<rect x="34.5" y="28.5" width="9" height="9" rx="1.5" ${eye}/><rect x="56.5" y="28.5" width="9" height="9" rx="1.5" ${eye}/>`
+      return `<rect x="34.5" y="28.5" width="9" height="9" rx="1" ${eye}/><rect x="56.5" y="28.5" width="9" height="9" rx="1" ${eye}/>`
     case 'circle':
       return `<circle cx="39" cy="33" r="4.5" ${eye}/><circle cx="61" cy="33" r="4.5" ${eye}/>`
     case 'visor':
@@ -43,42 +44,42 @@ function renderEyes(config: RobotConfig): string {
 function renderMouth(config: RobotConfig): string {
   switch (config.mouth) {
     case 'line':
-      return `<rect x="40" y="46" width="20" height="4" rx="2" fill="${DARK}"/>`
+      return `<rect x="40" y="46" width="20" height="3.5" rx="1.75" fill="${DARK}"/>`
     case 'grill':
       return [37.5, 44.5, 51.5, 58.5]
-        .map((x) => `<rect x="${x}" y="43" width="4" height="10" rx="1.5" fill="${DARK}"/>`)
+        .map((x) => `<rect x="${x}" y="43" width="3.5" height="10" rx="1" fill="${DARK}"/>`)
         .join('')
     case 'zigzag':
-      return `<path d="M38 49 L42 45 L46 49 L50 45 L54 49 L58 45 L62 49" stroke="${DARK}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
+      return `<path d="M38 49 L42 45 L46 49 L50 45 L54 49 L58 45 L62 49" stroke="${DARK}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
     case 'teeth':
       return (
-        `<rect x="40" y="43" width="20" height="9" rx="2" fill="none" stroke="${DARK}" stroke-width="2.5"/>` +
-        `<line x1="45" y1="43" x2="45" y2="52" stroke="${DARK}" stroke-width="2.5"/>` +
-        `<line x1="50" y1="43" x2="50" y2="52" stroke="${DARK}" stroke-width="2.5"/>` +
-        `<line x1="55" y1="43" x2="55" y2="52" stroke="${DARK}" stroke-width="2.5"/>`
+        `<rect x="40" y="43" width="20" height="9" rx="1.5" fill="none" stroke="${DARK}" stroke-width="2"/>` +
+        `<line x1="45" y1="43" x2="45" y2="52" stroke="${DARK}" stroke-width="2"/>` +
+        `<line x1="50" y1="43" x2="50" y2="52" stroke="${DARK}" stroke-width="2"/>` +
+        `<line x1="55" y1="43" x2="55" y2="52" stroke="${DARK}" stroke-width="2"/>`
       )
     case 'dots':
-      return `<circle cx="42" cy="48" r="2.2" fill="${DARK}"/><circle cx="50" cy="48" r="2.2" fill="${DARK}"/><circle cx="58" cy="48" r="2.2" fill="${DARK}"/>`
+      return `<circle cx="42" cy="48" r="2" fill="${DARK}"/><circle cx="50" cy="48" r="2" fill="${DARK}"/><circle cx="58" cy="48" r="2" fill="${DARK}"/>`
   }
 }
 
 function renderAntenna(config: RobotConfig): string {
   switch (config.antenna) {
     case 'ball':
-      return `<line x1="50" y1="18" x2="50" y2="7" stroke="${DARK}" stroke-width="4"/><circle cx="50" cy="5.5" r="4.5" fill="${DARK}"/>`
+      return `<line x1="50" y1="18" x2="50" y2="8" stroke="${DARK}" stroke-width="3"/><circle cx="50" cy="6.5" r="3.5" fill="${DARK}"/>`
     case 'double':
       return (
-        `<line x1="39" y1="18" x2="33" y2="7" stroke="${DARK}" stroke-width="4"/><circle cx="32" cy="5.5" r="4" fill="${DARK}"/>` +
-        `<line x1="61" y1="18" x2="67" y2="7" stroke="${DARK}" stroke-width="4"/><circle cx="68" cy="5.5" r="4" fill="${DARK}"/>`
+        `<line x1="39" y1="18" x2="33" y2="8" stroke="${DARK}" stroke-width="3"/><circle cx="32" cy="6.5" r="3" fill="${DARK}"/>` +
+        `<line x1="61" y1="18" x2="67" y2="8" stroke="${DARK}" stroke-width="3"/><circle cx="68" cy="6.5" r="3" fill="${DARK}"/>`
       )
     case 'loop':
-      return `<path d="M39 19 A 11 11 0 0 1 61 19" fill="none" stroke="${DARK}" stroke-width="4"/>`
+      return `<path d="M39 19 A 11 11 0 0 1 61 19" fill="none" stroke="${DARK}" stroke-width="3"/>`
     case 'zigzag':
-      return `<path d="M50 16 L44 11 L56 6 L50 2" fill="none" stroke="${DARK}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>`
+      return `<path d="M50 16 L44 11 L56 6 L50 2" fill="none" stroke="${DARK}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`
     case 'vee':
       return (
-        `<line x1="50" y1="18" x2="42" y2="5" stroke="${DARK}" stroke-width="4" stroke-linecap="round"/>` +
-        `<line x1="50" y1="18" x2="58" y2="5" stroke="${DARK}" stroke-width="4" stroke-linecap="round"/>`
+        `<line x1="50" y1="18" x2="42" y2="5" stroke="${DARK}" stroke-width="3" stroke-linecap="round"/>` +
+        `<line x1="50" y1="18" x2="58" y2="5" stroke="${DARK}" stroke-width="3" stroke-linecap="round"/>`
       )
     case 'none':
       return ''
@@ -88,13 +89,13 @@ function renderAntenna(config: RobotConfig): string {
 function renderEars(config: RobotConfig): string {
   switch (config.ears) {
     case 'bolt':
-      return `<rect x="15" y="27" width="13" height="12" rx="3" fill="${FACE}" ${OUTLINE}/><rect x="72" y="27" width="13" height="12" rx="3" fill="${FACE}" ${OUTLINE}/>`
+      return `<rect x="15" y="27" width="13" height="12" rx="2" fill="${FACE}" ${OUTLINE}/><rect x="72" y="27" width="13" height="12" rx="2" fill="${FACE}" ${OUTLINE}/>`
     case 'round':
       return `<circle cx="22" cy="33" r="7" fill="${FACE}" ${OUTLINE}/><circle cx="78" cy="33" r="7" fill="${FACE}" ${OUTLINE}/>`
     case 'pin':
       return (
-        `<rect x="14" y="31" width="15" height="4" fill="${DARK}"/><circle cx="14" cy="33" r="3.5" fill="${DARK}"/>` +
-        `<rect x="71" y="31" width="15" height="4" fill="${DARK}"/><circle cx="86" cy="33" r="3.5" fill="${DARK}"/>`
+        `<rect x="14" y="31.5" width="15" height="3" fill="${DARK}"/><circle cx="14" cy="33" r="3" fill="${DARK}"/>` +
+        `<rect x="71" y="31.5" width="15" height="3" fill="${DARK}"/><circle cx="86" cy="33" r="3" fill="${DARK}"/>`
       )
     case 'fin':
       return (
@@ -125,7 +126,7 @@ function renderNeck(config: RobotConfig): string {
 function renderBody(config: RobotConfig): string {
   switch (config.body) {
     case 'square':
-      return `<rect x="24" y="66" width="52" height="28" rx="6" fill="${FACE}" ${OUTLINE}/>`
+      return `<rect x="24" y="66" width="52" height="28" rx="4" fill="${FACE}" ${OUTLINE}/>`
     case 'round':
       return `<path d="M24 94 V82 Q24 66 39 66 H61 Q76 66 76 82 V94 Z" fill="${FACE}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'trapezoid':
@@ -144,9 +145,9 @@ function renderChest(config: RobotConfig): string {
     case 'buttons':
       return `<circle cx="44" cy="80" r="2.5" fill="${DARK}"/><circle cx="56" cy="80" r="2.5" fill="${DARK}"/>`
     case 'screen':
-      return `<rect x="39" y="74" width="22" height="12" rx="2" fill="none" stroke="${DARK}" stroke-width="2.5"/>`
+      return `<rect x="39" y="74" width="22" height="12" rx="1.5" fill="none" stroke="${DARK}" stroke-width="2"/>`
     case 'core':
-      return `<circle cx="50" cy="80" r="5.5" fill="${config.eyeColor}" stroke="${DARK}" stroke-width="2.5"/>`
+      return `<circle cx="50" cy="80" r="5.5" fill="${config.eyeColor}" stroke="${DARK}" stroke-width="2"/>`
     case 'none':
       return ''
   }

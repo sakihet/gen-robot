@@ -112,7 +112,10 @@ function savePng() {
 
 <template>
   <main class="app">
-    <h1 class="title">gen-robot</h1>
+    <div class="header">
+      <h1 class="title">GEN ROBOT</h1>
+      <p class="tagline">MAKE MORE OF US.</p>
+    </div>
     <div class="layout">
       <RobotPreview :config="config" />
       <div class="controls">
@@ -172,12 +175,29 @@ function savePng() {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
   margin: 0;
+}
+
+.tagline {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #6b6b70;
 }
 
 .layout {

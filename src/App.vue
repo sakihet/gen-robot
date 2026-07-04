@@ -164,6 +164,9 @@ function savePng() {
       <button type="button" class="action" @click="saveSvg">Save SVG</button>
       <button type="button" class="action" @click="savePng">Save PNG (512px)</button>
     </div>
+    <footer class="footer">
+      <a class="footer-link" href="https://github.com/sakihet/gen-robot" target="_blank" rel="noopener">GitHub</a>
+    </footer>
   </main>
 </template>
 
@@ -259,5 +262,18 @@ function savePng() {
 
 .action:hover {
   border-color: #a5a5ac;
+}
+
+.footer {
+  padding-top: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.footer-link {
+  color: #6b6b70;
+}
+
+.footer-link:hover {
+  color: #26262b;
 }
 </style>

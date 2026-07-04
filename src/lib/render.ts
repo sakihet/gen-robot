@@ -212,6 +212,14 @@ function renderBody(config: RobotConfig): string {
       return `<path d="M35 66 H65 L76 80 L65 94 H35 L24 80 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
     case 'capsule':
       return `<rect x="24" y="66" width="52" height="28" rx="14" fill="${config.faceColor}" ${OUTLINE}/>`
+    case 'wide':
+      return `<rect x="16" y="66" width="68" height="28" rx="5" fill="${config.faceColor}" ${OUTLINE}/>`
+    case 'dome':
+      return `<path d="M16 94 V84 Q16 66 36 66 H64 Q84 66 84 84 V94 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
+    case 'barrel':
+      return `<path d="M22 66 H78 C86 74 86 86 78 94 H22 C14 86 14 74 22 66 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
+    case 'broad':
+      return `<path d="M16 66 H84 L73 94 H27 Z" fill="${config.faceColor}" ${OUTLINE} stroke-linejoin="round"/>`
   }
 }
 

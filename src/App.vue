@@ -82,6 +82,10 @@ const bodyOptions = [
   { value: 'inverted', label: 'Inverted' },
   { value: 'hexagon', label: 'Hexagon' },
   { value: 'capsule', label: 'Capsule' },
+  { value: 'wide', label: 'Wide' },
+  { value: 'dome', label: 'Dome' },
+  { value: 'barrel', label: 'Barrel' },
+  { value: 'broad', label: 'Broad' },
 ] as const
 
 const chestOptions = [

@@ -30,7 +30,18 @@ export const ANTENNAS = [
 ] as const
 export const EARS = ['none', 'bolt', 'round', 'pin', 'fin', 'hex', 'vent', 'bracket'] as const
 export const NECKS = ['plain', 'duct', 'twin', 'ball', 'collar'] as const
-export const BODIES = ['square', 'round', 'trapezoid', 'inverted', 'hexagon', 'capsule'] as const
+export const BODIES = [
+  'square',
+  'round',
+  'trapezoid',
+  'inverted',
+  'hexagon',
+  'capsule',
+  'wide',
+  'dome',
+  'barrel',
+  'broad',
+] as const
 export const CHESTS = ['none', 'buttons', 'screen', 'core', 'hazard', 'vent'] as const
 
 export const FACE_COLORS = ['#ffffff', '#d9dade', '#aeb0b8', '#7a7d86'] as const

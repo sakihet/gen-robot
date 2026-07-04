@@ -226,7 +226,11 @@ function renderBody(config: RobotConfig): string {
 function renderChest(config: RobotConfig): string {
   switch (config.chest) {
     case 'buttons':
-      return `<circle cx="44" cy="80" r="2.5" fill="${DARK}"/><circle cx="56" cy="80" r="2.5" fill="${DARK}"/>`
+      return (
+        `<rect x="36" y="73" width="28" height="14" rx="2" fill="none" stroke="${DARK}" stroke-width="2"/>` +
+        `<circle cx="43.5" cy="80" r="3" fill="${config.eyeColor}" stroke="${DARK}" stroke-width="2"/>` +
+        `<circle cx="56.5" cy="80" r="3" fill="${config.eyeColor}" stroke="${DARK}" stroke-width="2"/>`
+      )
     case 'screen':
       return `<rect x="39" y="74" width="22" height="12" rx="1.5" fill="none" stroke="${DARK}" stroke-width="2"/>`
     case 'core':

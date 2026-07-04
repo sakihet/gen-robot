@@ -4,9 +4,9 @@ import PartPicker from './components/PartPicker.vue'
 import RobotPreview from './components/RobotPreview.vue'
 import { downloadPng, downloadSvg } from './lib/export'
 import { renderRobotSvg } from './lib/render'
-import { COLORS, FACE_COLORS, defaultConfig, randomConfig } from './lib/robot'
+import { COLORS, FACE_COLORS, randomConfig } from './lib/robot'
 
-const config = reactive(defaultConfig())
+const config = reactive(randomConfig())
 
 const headOptions = [
   { value: 'square', label: 'Square' },

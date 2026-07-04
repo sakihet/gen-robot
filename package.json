@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "vue": "beta",
+    "vue-gtag": "^3.7.1",
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
